@@ -1,0 +1,6 @@
+int32 position  # 0-255
+int32 speed     # 0-255
+int32 force     # 0-255
+---
+bool success
+int32 final_position

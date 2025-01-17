@@ -1,0 +1,11 @@
+install/
+log/
+build/
+
+# Colcon custom files
+COLCON_IGNORE
+AMENT_IGNORE
+
+srv/_*.py
+*.pcd
+*.pyc
