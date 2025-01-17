@@ -8,8 +8,6 @@ This package provides a **ROS 2** service node for controlling a Robotiq gripper
 > [!CAUTION]
 > You might not be able to leverage existing robotiq drivers,depending on implementation.
 
-
-
 ## Contents
 
 - `srv/GripperCommand.srv`: Custom service definition (position, speed, force -> success, final_position)
@@ -25,6 +23,7 @@ This package provides a **ROS 2** service node for controlling a Robotiq gripper
 ## Installation
 
 1. Clone this repository into your ROS 2 workspace:
+
    ```bash
    cd ~/ros2_ws/src
    git clone <URL to your repository>
@@ -53,7 +52,13 @@ ros2 run <package_name> robotiq_service_node \
 - `gripper_ip` is the IP address of the gripper or UR controller
 - `gripper_port` is the TCP port (default `63352`, unless you have changed it)
 
-### 2. Call the Service
+### 2. Call the Services
+
+First call the `activate_gripper` service to activate the gripper:
+
+```bash
+ros2 service call /activate_gripper std_srvs/srv/Trigger "{}"
+```
 
 Use the following service call to open or close the gripper:
 
@@ -63,6 +68,7 @@ ros2 service call /robotiq_gripper_command <package_name>/srv/GripperCommand \
 ```
 
 Parameters:
+
 - `position`: Desired position (0 = fully open, 255 = fully closed)
 - `speed`: Movement speed (0-255)
 - `force`: Grip force (0-255)
@@ -70,6 +76,7 @@ Parameters:
 ### 3. Check Output
 
 You should see:
+
 ```
 success: true
 final_position: 255
@@ -91,7 +98,7 @@ This indicates the gripper has moved successfully and is at position 255.
 - Check network connectivity (e.g., `ping 192.168.1.102`)
 - Ensure any firewall rules are disabled or allow traffic on the specified port
 
-
 ## Contributing
 
 Contributions are welcome! Feel free to open issues or pull requests to share your improvements.
+
