@@ -26,7 +26,7 @@ This package provides a **ROS 2** service node for controlling a Robotiq gripper
 
    ```bash
    cd ~/ros2_ws/src
-   git clone <URL to your repository>
+   git clone https://github.com/anipr2002/robotiq_gripper_ros2.git
    ```
 
 2. Install dependencies as needed (e.g., `rclpy`, `rosidl_default_generators`, etc.)
@@ -43,7 +43,7 @@ This package provides a **ROS 2** service node for controlling a Robotiq gripper
 ### 1. Run the Service Node
 
 ```bash
-ros2 run <package_name> robotiq_service_node \
+ros2 run robotiq_gripper_ros2 robotiq_service_node \
     --ros-args \
     -p gripper_ip:=192.168.1.102 \
     -p gripper_port:=63352
@@ -63,7 +63,7 @@ ros2 service call /activate_gripper std_srvs/srv/Trigger "{}"
 Use the following service call to open or close the gripper:
 
 ```bash
-ros2 service call /robotiq_gripper_command <package_name>/srv/GripperCommand \
+ros2 service call /robotiq_gripper_command robotiq_gripper_ros2/srv/GripperCommand \
     "{position: 255, speed: 150, force: 200}"
 ```
 
